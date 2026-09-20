@@ -3,7 +3,9 @@ import { Link, usePage } from '@inertiajs/react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 export default function Navbar() {
-    const { url, auth } = usePage().props;
+    const page = usePage();
+    const url = page.url || (typeof window !== 'undefined' ? window.location.pathname : '/');
+    const auth = page.props?.auth;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -36,6 +38,7 @@ export default function Navbar() {
     ];
 
     const isActive = (href) => {
+        if (!url) return false;
         if (href === '/') return url === '/';
         return url.startsWith(href);
     };

@@ -17,7 +17,9 @@ import {
 } from 'lucide-react';
 
 export default function AdminLayout({ title, children }) {
-    const { auth, url } = usePage().props;
+    const page = usePage();
+    const url = page.url || (typeof window !== 'undefined' ? window.location.pathname : '/');
+    const auth = page.props?.auth;
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
@@ -31,6 +33,7 @@ export default function AdminLayout({ title, children }) {
     ];
 
     const isActive = (href) => {
+        if (!url) return false;
         if (href === '/dashboard') return url === '/dashboard';
         return url.startsWith(href);
     };
