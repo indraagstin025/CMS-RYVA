@@ -10,7 +10,6 @@ import {
     Plus,
     ArrowUpRight,
     Edit,
-    Eye,
     MessageSquare,
 } from 'lucide-react';
 
@@ -64,49 +63,49 @@ export default function Dashboard({ stats, recentArticles = [] }) {
             title: 'Total Artikel',
             value: dataStats.totalArticles,
             icon: FileText,
-            color: 'text-emerald-400',
-            bg: 'bg-emerald-500/10',
-            border: 'border-emerald-500/20',
+            color: 'text-emerald-700',
+            bg: 'bg-emerald-50',
+            border: 'border-emerald-200/70',
         },
         {
-            title: 'Artikel Diterbitkan',
+            title: 'Artikel Terbit',
             value: dataStats.publishedArticles,
             icon: CheckCircle2,
-            color: 'text-cyan-400',
-            bg: 'bg-cyan-500/10',
-            border: 'border-cyan-500/20',
+            color: 'text-sky-700',
+            bg: 'bg-sky-50',
+            border: 'border-sky-200/70',
         },
         {
-            title: 'Draft Belum Terbit',
+            title: 'Draft Artikel',
             value: dataStats.draftArticles,
             icon: Clock,
-            color: 'text-amber-400',
-            bg: 'bg-amber-500/10',
-            border: 'border-amber-500/20',
+            color: 'text-amber-700',
+            bg: 'bg-amber-50',
+            border: 'border-amber-200/70',
         },
         {
-            title: 'Kategori Konten',
+            title: 'Kategori Riset',
             value: dataStats.totalCategories,
             icon: FolderTree,
-            color: 'text-purple-400',
-            bg: 'bg-purple-500/10',
-            border: 'border-purple-500/20',
+            color: 'text-indigo-700',
+            bg: 'bg-indigo-50',
+            border: 'border-indigo-200/70',
         },
         {
             title: 'Media Unggahan',
             value: dataStats.totalMedia,
             icon: Image,
-            color: 'text-blue-400',
-            bg: 'bg-blue-500/10',
-            border: 'border-blue-500/20',
+            color: 'text-blue-700',
+            bg: 'bg-blue-50',
+            border: 'border-blue-200/70',
         },
         {
             title: 'Pesan Masuk Baru',
             value: dataStats.unreadInquiries,
             icon: MessageSquare,
-            color: 'text-rose-400',
-            bg: 'bg-rose-500/10',
-            border: 'border-rose-500/20',
+            color: 'text-rose-700',
+            bg: 'bg-rose-50',
+            border: 'border-rose-200/70',
         },
     ];
 
@@ -117,17 +116,17 @@ export default function Dashboard({ stats, recentArticles = [] }) {
             {/* Top Overview Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                 <div>
-                    <h2 className="text-xl font-bold text-white tracking-tight">
+                    <h2 className="text-xl font-bold text-slate-900 tracking-tight">
                         Ringkasan Konten & Aktivitas
                     </h2>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-slate-600 mt-1">
                         Kelola publikasi riset terapan, kategori, tag, dan aset media RYVA.ID.
                     </p>
                 </div>
                 <div className="flex items-center gap-3">
                     <Link
                         href="/admin/articles/create"
-                        className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors shadow-md shadow-emerald-500/20"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-sm"
                     >
                         <Plus className="w-4 h-4" />
                         Tulis Artikel Baru
@@ -142,10 +141,10 @@ export default function Dashboard({ stats, recentArticles = [] }) {
                     return (
                         <div
                             key={stat.title}
-                            className={`p-4 rounded-xl bg-slate-900/60 border ${stat.border} flex flex-col justify-between`}
+                            className={`p-4 rounded-xl bg-white border ${stat.border} shadow-sm flex flex-col justify-between`}
                         >
                             <div className="flex items-center justify-between mb-3">
-                                <span className="text-xs text-slate-400 font-medium truncate">
+                                <span className="text-xs text-slate-600 font-medium truncate">
                                     {stat.title}
                                 </span>
                                 <div
@@ -154,7 +153,7 @@ export default function Dashboard({ stats, recentArticles = [] }) {
                                     <Icon className="w-3.5 h-3.5" />
                                 </div>
                             </div>
-                            <div className="text-2xl font-bold text-white font-mono">
+                            <div className="text-2xl font-bold text-slate-900 font-mono">
                                 {stat.value}
                             </div>
                         </div>
@@ -163,17 +162,17 @@ export default function Dashboard({ stats, recentArticles = [] }) {
             </div>
 
             {/* Recent Articles Table */}
-            <div className="rounded-2xl bg-slate-900/60 border border-slate-800 overflow-hidden">
-                <div className="p-5 sm:p-6 border-b border-slate-800/80 flex items-center justify-between">
+            <div className="rounded-2xl bg-white border border-slate-200/90 shadow-sm overflow-hidden">
+                <div className="p-5 sm:p-6 border-b border-slate-200 flex items-center justify-between bg-white">
                     <div>
-                        <h3 className="text-sm font-bold text-white">Artikel Terbaru</h3>
-                        <p className="text-xs text-slate-400">
+                        <h3 className="text-sm font-bold text-slate-900">Artikel Terbaru</h3>
+                        <p className="text-xs text-slate-500">
                             Daftar artikel yang baru saja dibuat atau diperbarui.
                         </p>
                     </div>
                     <Link
                         href="/admin/articles"
-                        className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1"
+                        className="text-xs font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1"
                     >
                         Lihat Semua Artikel
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -182,45 +181,45 @@ export default function Dashboard({ stats, recentArticles = [] }) {
 
                 <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs">
-                        <thead className="bg-slate-950/60 text-slate-400 uppercase font-mono text-[11px] border-b border-slate-800">
+                        <thead className="bg-slate-50 text-slate-600 uppercase font-mono text-[11px] border-b border-slate-200">
                             <tr>
-                                <th className="py-3.5 px-6">Judul Artikel</th>
-                                <th className="py-3.5 px-6">Kategori</th>
-                                <th className="py-3.5 px-6">Status</th>
-                                <th className="py-3.5 px-6">Tanggal</th>
-                                <th className="py-3.5 px-6 text-right">Aksi</th>
+                                <th className="py-3.5 px-6 font-semibold">Judul Artikel</th>
+                                <th className="py-3.5 px-6 font-semibold">Kategori</th>
+                                <th className="py-3.5 px-6 font-semibold">Status</th>
+                                <th className="py-3.5 px-6 font-semibold">Tanggal</th>
+                                <th className="py-3.5 px-6 text-right font-semibold">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-800/60 text-slate-300">
+                        <tbody className="divide-y divide-slate-100 text-slate-700">
                             {articles.map((art) => (
-                                <tr key={art.id} className="hover:bg-slate-800/30 transition-colors">
-                                    <td className="py-4 px-6 font-medium text-white max-w-sm truncate">
+                                <tr key={art.id} className="hover:bg-slate-50/80 transition-colors">
+                                    <td className="py-4 px-6 font-semibold text-slate-900 max-w-sm truncate">
                                         {art.title}
                                     </td>
                                     <td className="py-4 px-6">
-                                        <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px]">
+                                        <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium border border-slate-200">
                                             {art.category}
                                         </span>
                                     </td>
                                     <td className="py-4 px-6">
                                         {art.status === 'published' ? (
-                                            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-semibold">
+                                            <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[11px] font-semibold">
                                                 Diterbitkan
                                             </span>
                                         ) : (
-                                            <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[11px] font-semibold">
+                                            <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-[11px] font-semibold">
                                                 Draft
                                             </span>
                                         )}
                                     </td>
-                                    <td className="py-4 px-6 font-mono text-slate-400 text-[11px]">
+                                    <td className="py-4 px-6 font-mono text-slate-500 text-[11px]">
                                         {art.published_at}
                                     </td>
                                     <td className="py-4 px-6 text-right">
                                         <div className="inline-flex items-center gap-2">
                                             <Link
                                                 href={`/admin/articles/${art.id}/edit`}
-                                                className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                                                className="p-1.5 rounded text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
                                                 title="Edit Artikel"
                                             >
                                                 <Edit className="w-3.5 h-3.5" />
@@ -236,3 +235,4 @@ export default function Dashboard({ stats, recentArticles = [] }) {
         </AdminLayout>
     );
 }
+

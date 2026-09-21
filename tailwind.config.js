@@ -14,16 +14,20 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                sans: ['"DM Sans"', 'Inter', ...defaultTheme.fontFamily.sans],
+                serif: ['"Newsreader"', 'Georgia', 'Cambria', ...defaultTheme.fontFamily.serif],
+                mono: ['"Space Mono"', ...defaultTheme.fontFamily.mono],
             },
             colors: {
                 brand: {
-                    dark: '#0A0D14',
-                    surface: '#111622',
-                    elevated: '#182232',
-                    border: '#1E293B',
-                    emerald: '#10B981',
-                    cyan: '#06B6D4',
+                    base: '#F8FAFC',
+                    surface: '#FFFFFF',
+                    elevated: '#F1F5F9',
+                    border: '#E2E8F0',
+                    emerald: '#059669',
+                    emeraldLight: '#ECFDF5',
+                    cyan: '#0284C7',
+                    cyanLight: '#F0F9FF',
                 },
             },
         },

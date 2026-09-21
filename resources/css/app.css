@@ -1,3 +1,244 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --ink: #101412;
+    --ink-soft: #171d19;
+    --paper: #f3f5f1;
+    --line-dark: rgba(235, 242, 235, .15);
+    --line-light: #d7ddd6;
+    --muted-dark: #a9b3ab;
+    --muted-light: #657066;
+    --accent: #b6ee63;
+    --accent-deep: #6c9f24;
+}
+
+html {
+    scroll-behavior: auto;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+.mono {
+    font-family: "Space Mono", monospace;
+}
+
+.site-shell {
+    width: 100%;
+}
+
+.tech-grid {
+    background-image: linear-gradient(rgba(182, 238, 99, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(182, 238, 99, .08) 1px, transparent 1px);
+    background-size: 44px 44px;
+}
+
+.section-wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-link {
+    color: #dce5dc;
+    font-size: .875rem;
+    transition: color .2s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+}
+
+.nav-link:focus-visible,
+.filter-button:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    border-radius: .25rem;
+    background: var(--accent);
+    color: #13200c;
+    padding: .84rem 1.15rem;
+    font-size: .875rem;
+    font-weight: 700;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.button-primary:hover {
+    background: #cdf58b;
+    transform: translateY(-2px);
+}
+
+.button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    border: 1px solid rgba(239, 245, 239, .36);
+    border-radius: .25rem;
+    color: #edf4ed;
+    padding: .82rem 1.12rem;
+    font-size: .875rem;
+    font-weight: 600;
+    transition: .2s ease;
+}
+
+.button-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.eyebrow {
+    letter-spacing: .13em;
+    font-size: .68rem;
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.reveal {
+    animation: rise .7s ease both;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.system-card,
+.focus-card,
+.application-card,
+.product-card,
+.insight-card {
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.system-card:hover,
+.focus-card:hover,
+.application-card:hover,
+.product-card:hover,
+.insight-card:hover {
+    transform: translateY(-5px);
+    border-color: #8cb947;
+    box-shadow: 0 18px 35px rgba(13, 18, 14, .08);
+}
+
+.node-pulse {
+    animation: nodePulse 3.4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.node-pulse.delay {
+    animation-delay: 1.1s;
+}
+
+@keyframes nodePulse {
+    0%,
+    100% {
+        opacity: .52;
+        r: 5;
+    }
+
+    50% {
+        opacity: 1;
+        r: 7;
+    }
+}
+
+.dash-flow {
+    stroke-dasharray: 9 12;
+    animation: dash 11s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -210;
+    }
+}
+
+.process-step::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    height: 1px;
+    width: 100%;
+    background: #cdd5cc;
+    z-index: 0;
+}
+
+.process-step:last-child::after {
+    display: none;
+}
+
+.process-marker {
+    position: relative;
+    z-index: 1;
+}
+
+.filter-button[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--accent);
+    border-color: var(--ink);
+}
+
+.mobile-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+}
+
+.mobile-panel.is-open {
+    max-height: 420px;
+}
+
+@media (max-width: 767px) {
+    .section-wrap {
+        padding: 0 1.25rem;
+    }
+
+    .process-step::after {
+        left: 20px;
+        top: 40px;
+        height: 100%;
+        width: 1px;
+    }
+
+    .process-step {
+        min-height: 82px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}

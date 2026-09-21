@@ -7,8 +7,6 @@ import {
     Copy,
     Trash2,
     Check,
-    Search,
-    FileText,
 } from 'lucide-react';
 
 export default function MediaIndex({ media = [] }) {
@@ -57,24 +55,24 @@ export default function MediaIndex({ media = [] }) {
 
             <div className="space-y-6">
                 <div>
-                    <h2 className="text-xl font-bold text-white tracking-tight">
+                    <h2 className="text-xl font-bold text-slate-900 tracking-tight">
                         Pustaka Media & Aset Visual
                     </h2>
-                    <p className="text-xs text-slate-400 mt-0.5">
+                    <p className="text-xs text-slate-600 mt-0.5">
                         Unggah dan kelola gambar sampul artikel, diagram sistem, dan dokumentasi visual (JPG, PNG, WEBP, SVG).
                     </p>
                 </div>
 
                 {/* Upload Dropzone Box */}
-                <div className="p-8 rounded-2xl border-2 border-dashed border-slate-700 bg-slate-900/40 hover:border-emerald-500/50 transition-colors text-center space-y-3 cursor-pointer">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto">
+                <div className="p-8 rounded-2xl border-2 border-dashed border-slate-300 bg-white hover:border-emerald-600 transition-colors text-center space-y-3 shadow-sm cursor-pointer">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800 mx-auto">
                         <UploadCloud className="w-6 h-6" />
                     </div>
                     <div>
-                        <div className="text-sm font-bold text-white">
+                        <div className="text-sm font-bold text-slate-900">
                             Klik atau tarik file gambar ke area ini
                         </div>
-                        <div className="text-xs text-slate-400 mt-1">
+                        <div className="text-xs text-slate-500 mt-1">
                             Format didukung: WEBP, JPG, PNG, SVG (Maksimal 5 MB per file)
                         </div>
                     </div>
@@ -86,16 +84,16 @@ export default function MediaIndex({ media = [] }) {
                     />
                     <label
                         htmlFor="media-file-input"
-                        className="inline-block px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs cursor-pointer transition-colors"
+                        className="inline-block px-4 py-2 min-h-[44px] leading-[28px] rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs cursor-pointer shadow-sm transition-colors"
                     >
                         Pilih File dari Perangkat
                     </label>
                 </div>
 
                 {/* Media Grid */}
-                <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-4">
+                    <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
                             Semua File ({list.length})
                         </span>
                     </div>
@@ -104,40 +102,40 @@ export default function MediaIndex({ media = [] }) {
                         {list.map((item) => (
                             <div
                                 key={item.id}
-                                className="group p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 hover:border-slate-700 transition-colors flex flex-col justify-between"
+                                className="group p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition-colors flex flex-col justify-between"
                             >
-                                <div className="h-36 rounded-lg bg-slate-900 flex items-center justify-center overflow-hidden border border-slate-800/60 mb-3 relative">
-                                    <div className="text-slate-600 flex flex-col items-center gap-1">
+                                <div className="h-36 rounded-lg bg-white flex items-center justify-center overflow-hidden border border-slate-200 mb-3 relative">
+                                    <div className="text-slate-400 flex flex-col items-center gap-1">
                                         <ImageIcon className="w-8 h-8" />
-                                        <span className="text-[10px] font-mono uppercase">
+                                        <span className="text-[10px] font-mono uppercase font-semibold text-slate-500">
                                             {item.mime_type.split('/')[1]}
                                         </span>
                                     </div>
                                 </div>
 
                                 <div>
-                                    <div className="text-xs font-semibold text-white truncate mb-1">
+                                    <div className="text-xs font-semibold text-slate-900 truncate mb-1">
                                         {item.filename}
                                     </div>
-                                    <div className="text-[11px] text-slate-400 font-mono mb-3">
+                                    <div className="text-[11px] text-slate-500 font-mono mb-3">
                                         {item.size} • {item.created_at}
                                     </div>
                                 </div>
 
-                                <div className="pt-2 border-t border-slate-800/60 flex items-center justify-between">
+                                <div className="pt-2 border-t border-slate-200 flex items-center justify-between">
                                     <button
                                         type="button"
                                         onClick={() => handleCopyUrl(item)}
-                                        className="inline-flex items-center gap-1 text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
+                                        className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
                                     >
                                         {copiedId === item.id ? (
                                             <>
-                                                <Check className="w-3 h-3" />
+                                                <Check className="w-3 h-3 text-emerald-700" />
                                                 <span>Tersalin!</span>
                                             </>
                                         ) : (
                                             <>
-                                                <Copy className="w-3 h-3" />
+                                                <Copy className="w-3 h-3 text-emerald-700" />
                                                 <span>Salin URL</span>
                                             </>
                                         )}
@@ -145,7 +143,7 @@ export default function MediaIndex({ media = [] }) {
 
                                     <button
                                         type="button"
-                                        className="p-1 text-slate-400 hover:text-rose-400 transition-colors"
+                                        className="p-1 text-slate-400 hover:text-rose-600 transition-colors"
                                         title="Hapus File"
                                     >
                                         <Trash2 className="w-3.5 h-3.5" />
@@ -159,3 +157,4 @@ export default function MediaIndex({ media = [] }) {
         </AdminLayout>
     );
 }
+

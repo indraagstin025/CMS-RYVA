@@ -4,13 +4,13 @@ import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
 
 export default function PublicLayout({ title, description, children }) {
-    const siteTitle = title ? `${title} | RYVA.ID` : 'RYVA.ID - Research to Reality';
+    const siteTitle = title ? `${title} | RYVA.ID` : 'RYVA.ID : Technology Company';
     const metaDescription =
         description ||
-        'RYVA.ID adalah perusahaan teknologi yang berfokus pada applied research, pengembangan teknologi, dan penerapan solusi nyata di dunia industri, UMKM, dan masyarakat.';
+        'RYVA.ID is a technology company focused on applied research, innovation, and real-world technology solutions.';
 
     return (
-        <div className="min-h-screen flex flex-col bg-[#0A0D14] text-slate-100 antialiased">
+        <div data-template-id="__page-root" className="site-shell min-h-screen flex flex-col bg-[#101412] text-[#101412]">
             <Head>
                 <title>{siteTitle}</title>
                 <meta name="description" content={metaDescription} />
@@ -24,7 +24,7 @@ export default function PublicLayout({ title, description, children }) {
 
             <Navbar />
 
-            <main className="flex-grow pt-20">{children}</main>
+            <div className="flex-grow">{children}</div>
 
             <Footer />
         </div>

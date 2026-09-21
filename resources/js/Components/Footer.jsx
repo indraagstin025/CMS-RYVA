@@ -1,106 +1,58 @@
 import React from 'react';
 import { Link } from '@inertiajs/react';
-import { Mail, MapPin, ArrowRight } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="bg-[#070A0F] border-t border-slate-800/80 text-slate-400">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-                    {/* Column 1: Brand & Philosophy */}
-                    <div className="lg:col-span-5 space-y-4">
-                        <Link href="/" className="inline-flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-base">
-                                R
-                            </div>
-                            <span className="text-xl font-bold tracking-tight text-white">
-                                RYVA<span className="text-emerald-400">.ID</span>
-                            </span>
+        <footer className="bg-[#100E0C] py-16 text-white border-t border-white/10">
+            <div className="section-wrap">
+                <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_.9fr]">
+                    <div>
+                        <Link
+                            href="/"
+                            className="text-2xl font-bold tracking-tight text-white flex items-center gap-2"
+                        >
+                            <span className="h-2.5 w-2.5 rounded-full bg-[#22C55E]"></span>
+                            <span>RYVA.ID</span>
                         </Link>
-                        <p className="text-sm text-slate-400 leading-relaxed max-w-md">
-                            Perusahaan teknologi yang berfokus pada applied research, pengembangan teknologi, dan penerapan solusi untuk menyelesaikan permasalahan nyata di dunia industri, UMKM, dan masyarakat.
+                        <p className="mt-3 text-sm text-[#A8A196] max-w-sm leading-relaxed">
+                            Riset terapan, inovasi teknologi, dan solusi nyata untuk industri, UMKM, dan masyarakat.
                         </p>
-                        <div className="pt-2 text-xs text-slate-500 font-mono flex items-center gap-2">
-                            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            Core Philosophy: Research to Reality
-                        </div>
+                        <p className="mt-4 text-xs font-mono text-[#4ADE80] uppercase tracking-wider font-semibold">
+                            Research to Reality.
+                        </p>
                     </div>
 
-                    {/* Column 2: Navigation Links */}
-                    <div className="lg:col-span-3 space-y-3">
-                        <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200">
-                            Navigasi
+                    <div>
+                        <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#4ADE80] mb-4">
+                            Navigasi Utama
                         </h4>
-                        <ul className="space-y-2.5 text-sm">
-                            <li>
-                                <Link href="/" className="hover:text-emerald-400 transition-colors">
-                                    Beranda
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/about" className="hover:text-emerald-400 transition-colors">
-                                    Tentang RYVA.ID
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/services" className="hover:text-emerald-400 transition-colors">
-                                    Fokus & Layanan Riset
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/portfolio" className="hover:text-emerald-400 transition-colors">
-                                    Portofolio & Studi Kasus
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/articles" className="hover:text-emerald-400 transition-colors">
-                                    Artikel & Publikasi
-                                </Link>
-                            </li>
-                        </ul>
+                        <nav aria-label="Navigasi footer" className="grid grid-cols-2 gap-3 text-sm text-[#D4CEBF]">
+                            <a href="/#research" className="hover:text-[#4ADE80] transition-colors">Riset</a>
+                            <a href="/#solutions" className="hover:text-[#4ADE80] transition-colors">Solusi</a>
+                            <a href="/#products" className="hover:text-[#4ADE80] transition-colors">Produk</a>
+                            <Link href="/articles" className="hover:text-[#4ADE80] transition-colors">Insights</Link>
+                            <a href="/#about" className="hover:text-[#4ADE80] transition-colors">Tentang</a>
+                            <a href="/#contact" className="hover:text-[#4ADE80] transition-colors">Kontak</a>
+                        </nav>
                     </div>
 
-                    {/* Column 3: Focus Domains */}
-                    <div className="lg:col-span-4 space-y-3">
-                        <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200">
-                            Area Fokus Teknologi
+                    <div>
+                        <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#4ADE80] mb-4">
+                            Kemitraan &amp; Kontak
                         </h4>
-                        <div className="flex flex-wrap gap-2 text-xs">
-                            <span className="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300">
-                                Artificial Intelligence
-                            </span>
-                            <span className="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300">
-                                Computer Vision
-                            </span>
-                            <span className="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300">
-                                Internet of Things
-                            </span>
-                            <span className="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300">
-                                Machine Learning
-                            </span>
-                            <span className="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300">
-                                Automation
-                            </span>
-                            <span className="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700/60 text-slate-300">
-                                Intelligent Systems
-                            </span>
-                        </div>
-                        <div className="pt-3">
-                            <Link
-                                href="/contact"
-                                className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
-                            >
-                                Hubungi untuk Kolaborasi Riset
-                                <ArrowRight className="w-3.5 h-3.5" />
-                            </Link>
+                        <div className="text-sm text-[#D4CEBF] space-y-2.5">
+                            <p>Surel: <span className="text-white font-medium">research@ryva.id</span></p>
+                            <p>Media Sosial: <span className="text-white font-medium">@ryva.id</span></p>
+                            <p>Wilayah: <span className="text-white font-medium">Indonesia</span></p>
                         </div>
                     </div>
                 </div>
 
-                <div className="mt-12 pt-6 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-                    <p>© {new Date().getFullYear()} RYVA.ID. Hak Cipta Dilindungi.</p>
-                    <p className="text-slate-500 font-mono text-[11px]">
-                        Research & Innovation Platform
+                <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8C8578]">
+                    <p>&copy; 2026 RYVA.ID. Research to Reality. Seluruh hak cipta dilindungi.</p>
+                    <p className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                        <span>Sistem Operasional Normal</span>
                     </p>
                 </div>
             </div>

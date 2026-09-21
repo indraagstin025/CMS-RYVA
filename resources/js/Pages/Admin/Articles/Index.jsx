@@ -7,7 +7,6 @@ import {
     Edit,
     Trash2,
     Eye,
-    Filter,
     FileText,
     CheckCircle2,
     Clock,
@@ -87,17 +86,17 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
                 {/* Header Action Bar */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                        <h2 className="text-xl font-bold text-white tracking-tight">
+                        <h2 className="text-xl font-bold text-slate-900 tracking-tight">
                             Daftar Artikel & Publikasi
                         </h2>
-                        <p className="text-xs text-slate-400 mt-0.5">
+                        <p className="text-xs text-slate-600 mt-0.5">
                             Kelola penerbitan, draf, dan metadata SEO dari setiap artikel riset.
                         </p>
                     </div>
 
                     <Link
                         href="/admin/articles/create"
-                        className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors shadow-md shadow-emerald-500/10"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-sm"
                     >
                         <Plus className="w-4 h-4" />
                         Tulis Artikel Baru
@@ -105,7 +104,7 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
                 </div>
 
                 {/* Search & Filter Bar */}
-                <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                     <div className="relative flex-1 max-w-sm">
                         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                         <input
@@ -114,7 +113,7 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Cari judul artikel..."
                             aria-label="Cari judul artikel"
-                            className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-950/80 border border-slate-800 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+                            className="w-full pl-10 pr-4 py-2 rounded-lg bg-white border border-slate-300 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-emerald-600"
                         />
                     </div>
 
@@ -124,8 +123,8 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
                             onClick={() => setStatusFilter('all')}
                             className={`px-3 py-1.5 min-h-[36px] rounded-lg text-xs font-semibold transition-colors ${
                                 statusFilter === 'all'
-                                    ? 'bg-emerald-500 text-slate-950'
-                                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                                    ? 'bg-emerald-600 text-white shadow-sm'
+                                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                             }`}
                         >
                             Semua
@@ -135,8 +134,8 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
                             onClick={() => setStatusFilter('published')}
                             className={`px-3 py-1.5 min-h-[36px] rounded-lg text-xs font-semibold transition-colors ${
                                 statusFilter === 'published'
-                                    ? 'bg-emerald-500 text-slate-950'
-                                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                                    ? 'bg-emerald-600 text-white shadow-sm'
+                                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                             }`}
                         >
                             Diterbitkan
@@ -146,8 +145,8 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
                             onClick={() => setStatusFilter('draft')}
                             className={`px-3 py-1.5 min-h-[36px] rounded-lg text-xs font-semibold transition-colors ${
                                 statusFilter === 'draft'
-                                    ? 'bg-emerald-500 text-slate-950'
-                                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                                    ? 'bg-emerald-600 text-white shadow-sm'
+                                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                             }`}
                         >
                             Draft
@@ -156,61 +155,61 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
                 </div>
 
                 {/* Table */}
-                <div className="rounded-2xl bg-slate-900/60 border border-slate-800 overflow-hidden">
+                <div className="rounded-2xl bg-white border border-slate-200/90 shadow-sm overflow-hidden">
                     {filtered.length === 0 ? (
                         <div className="text-center py-16 px-4">
-                            <FileText className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-                            <h3 className="text-sm font-bold text-white mb-1">
+                            <FileText className="w-10 h-10 text-slate-400 mx-auto mb-3" />
+                            <h3 className="text-sm font-bold text-slate-900 mb-1">
                                 Tidak ada artikel yang ditemukan
                             </h3>
-                            <p className="text-xs text-slate-400">
+                            <p className="text-xs text-slate-500">
                                 Coba sesuaikan kata kunci pencarian atau filter status Anda.
                             </p>
                         </div>
                     ) : (
                         <div className="overflow-x-auto">
                             <table className="w-full text-left text-xs">
-                                <thead className="bg-slate-950/60 text-slate-400 uppercase font-mono text-[11px] border-b border-slate-800">
+                                <thead className="bg-slate-50 text-slate-600 uppercase font-mono text-[11px] border-b border-slate-200">
                                     <tr>
-                                        <th className="py-3.5 px-6">Judul Artikel</th>
-                                        <th className="py-3.5 px-6">Kategori</th>
-                                        <th className="py-3.5 px-6">Penulis</th>
-                                        <th className="py-3.5 px-6">Status</th>
-                                        <th className="py-3.5 px-6">Tanggal Rilis</th>
-                                        <th className="py-3.5 px-6 text-right">Aksi</th>
+                                        <th className="py-3.5 px-6 font-semibold">Judul Artikel</th>
+                                        <th className="py-3.5 px-6 font-semibold">Kategori</th>
+                                        <th className="py-3.5 px-6 font-semibold">Penulis</th>
+                                        <th className="py-3.5 px-6 font-semibold">Status</th>
+                                        <th className="py-3.5 px-6 font-semibold">Tanggal Rilis</th>
+                                        <th className="py-3.5 px-6 text-right font-semibold">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-slate-800/60 text-slate-300">
+                                <tbody className="divide-y divide-slate-100 text-slate-700">
                                     {filtered.map((art) => (
                                         <tr
                                             key={art.id}
-                                            className="hover:bg-slate-800/30 transition-colors"
+                                            className="hover:bg-slate-50/80 transition-colors"
                                         >
-                                            <td className="py-4 px-6 font-medium text-white max-w-sm truncate">
+                                            <td className="py-4 px-6 font-semibold text-slate-900 max-w-sm truncate">
                                                 {art.title}
                                             </td>
                                             <td className="py-4 px-6">
-                                                <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px]">
+                                                <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium border border-slate-200">
                                                     {art.category}
                                                 </span>
                                             </td>
-                                            <td className="py-4 px-6 text-slate-400">
+                                            <td className="py-4 px-6 text-slate-600">
                                                 {art.author}
                                             </td>
                                             <td className="py-4 px-6">
                                                 {art.status === 'published' ? (
-                                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold text-[11px]">
-                                                        <CheckCircle2 className="w-3 h-3" />
+                                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold text-[11px]">
+                                                        <CheckCircle2 className="w-3 h-3 text-emerald-700" />
                                                         Diterbitkan
                                                     </span>
                                                 ) : (
-                                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold text-[11px]">
-                                                        <Clock className="w-3 h-3" />
+                                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 font-semibold text-[11px]">
+                                                        <Clock className="w-3 h-3 text-amber-700" />
                                                         Draft
                                                     </span>
                                                 )}
                                             </td>
-                                            <td className="py-4 px-6 font-mono text-slate-400 text-[11px]">
+                                            <td className="py-4 px-6 font-mono text-slate-500 text-[11px]">
                                                 {art.published_at}
                                             </td>
                                             <td className="py-4 px-6 text-right">
@@ -218,14 +217,14 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
                                                     <Link
                                                         href={`/articles/${art.slug}`}
                                                         target="_blank"
-                                                        className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-slate-800"
+                                                        className="p-1.5 rounded text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
                                                         title="Lihat di Web Publik"
                                                     >
                                                         <Eye className="w-3.5 h-3.5" />
                                                     </Link>
                                                     <Link
                                                         href={`/admin/articles/${art.id}/edit`}
-                                                        className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-slate-800"
+                                                        className="p-1.5 rounded text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
                                                         title="Edit Artikel"
                                                     >
                                                         <Edit className="w-3.5 h-3.5" />
@@ -233,7 +232,7 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
                                                     <button
                                                         type="button"
                                                         onClick={() => handleDelete(art)}
-                                                        className="p-1.5 rounded text-rose-400 hover:text-rose-300 hover:bg-rose-500/10"
+                                                        className="p-1.5 rounded text-rose-600 hover:text-rose-700 hover:bg-rose-50 transition-colors"
                                                         title="Hapus Artikel"
                                                     >
                                                         <Trash2 className="w-3.5 h-3.5" />
@@ -251,35 +250,35 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
 
             {/* Delete Confirmation Modal */}
             {deleteModalOpen && articleToDelete && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-2xl">
-                        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-                            <h3 className="text-sm font-bold text-white">Konfirmasi Penghapusan</h3>
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+                    <div className="w-full max-w-md bg-white border border-slate-200 rounded-2xl p-6 space-y-4 shadow-xl">
+                        <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+                            <h3 className="text-sm font-bold text-slate-900">Konfirmasi Penghapusan</h3>
                             <button
                                 type="button"
                                 onClick={() => setDeleteModalOpen(false)}
-                                className="text-slate-400 hover:text-white"
+                                className="text-slate-400 hover:text-slate-600"
                             >
                                 <X className="w-4 h-4" />
                             </button>
                         </div>
-                        <p className="text-xs text-slate-300 leading-relaxed">
+                        <p className="text-xs text-slate-600 leading-relaxed">
                             Apakah Anda yakin ingin menghapus artikel{' '}
-                            <strong className="text-white">"{articleToDelete.title}"</strong>?
+                            <strong className="text-slate-900">"{articleToDelete.title}"</strong>?
                             Tindakan ini tidak dapat dibatalkan.
                         </p>
                         <div className="flex justify-end gap-3 pt-2">
                             <button
                                 type="button"
                                 onClick={() => setDeleteModalOpen(false)}
-                                className="px-4 py-2 min-h-[44px] rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300"
+                                className="px-4 py-2 min-h-[44px] rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-700 transition-colors"
                             >
                                 Batalkan
                             </button>
                             <button
                                 type="button"
                                 onClick={confirmDelete}
-                                className="px-4 py-2 min-h-[44px] rounded-lg bg-rose-600 hover:bg-rose-500 text-xs font-semibold text-white"
+                                className="px-4 py-2 min-h-[44px] rounded-lg bg-rose-600 hover:bg-rose-500 text-xs font-semibold text-white transition-colors"
                             >
                                 Hapus Sekarang
                             </button>
@@ -290,3 +289,4 @@ export default function ArticlesIndex({ articles = [], categories = [] }) {
         </AdminLayout>
     );
 }
+

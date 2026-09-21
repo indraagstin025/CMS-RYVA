@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Head } from '@inertiajs/react';
 import AdminLayout from '@/Layouts/AdminLayout';
-import { MessageSquare, Mail, Building2, Calendar, CheckCircle2, Clock, Trash2 } from 'lucide-react';
+import { Mail, Building2, Trash2 } from 'lucide-react';
 
 export default function InquiriesIndex({ inquiries = [] }) {
     const defaultInquiries = [
@@ -37,10 +37,10 @@ export default function InquiriesIndex({ inquiries = [] }) {
 
             <div className="space-y-6">
                 <div>
-                    <h2 className="text-xl font-bold text-white tracking-tight">
+                    <h2 className="text-xl font-bold text-slate-900 tracking-tight">
                         Pesan Masuk & Minat Kolaborasi
                     </h2>
-                    <p className="text-xs text-slate-400 mt-0.5">
+                    <p className="text-xs text-slate-600 mt-0.5">
                         Daftar formulir permohonan diskusi riset dan kemitraan dari halaman kontak.
                     </p>
                 </div>
@@ -49,36 +49,36 @@ export default function InquiriesIndex({ inquiries = [] }) {
                     {list.map((item) => (
                         <div
                             key={item.id}
-                            className={`p-6 rounded-2xl border transition-colors ${
+                            className={`p-6 rounded-2xl border transition-colors shadow-sm ${
                                 item.status === 'unread'
-                                    ? 'bg-slate-900/80 border-emerald-500/40'
-                                    : 'bg-slate-900/40 border-slate-800'
+                                    ? 'bg-white border-emerald-300 ring-1 ring-emerald-100'
+                                    : 'bg-white border-slate-200'
                             }`}
                         >
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800/80">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-2">
-                                        <h3 className="text-base font-bold text-white">
+                                        <h3 className="text-base font-bold text-slate-900">
                                             {item.name}
                                         </h3>
                                         {item.status === 'unread' ? (
-                                            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider">
+                                            <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold uppercase tracking-wider">
                                                 Baru
                                             </span>
                                         ) : (
-                                            <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[10px]">
+                                            <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 text-[10px]">
                                                 Sudah Dibaca
                                             </span>
                                         )}
                                     </div>
-                                    <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
+                                    <div className="flex flex-wrap items-center gap-4 text-xs text-slate-600">
                                         <span className="flex items-center gap-1">
-                                            <Mail className="w-3.5 h-3.5 text-slate-500" />
+                                            <Mail className="w-3.5 h-3.5 text-slate-400" />
                                             {item.email}
                                         </span>
                                         {item.organization && (
                                             <span className="flex items-center gap-1">
-                                                <Building2 className="w-3.5 h-3.5 text-slate-500" />
+                                                <Building2 className="w-3.5 h-3.5 text-slate-400" />
                                                 {item.organization}
                                             </span>
                                         )}
@@ -91,10 +91,10 @@ export default function InquiriesIndex({ inquiries = [] }) {
                             </div>
 
                             <div className="py-4 space-y-2">
-                                <div className="text-xs font-semibold text-emerald-400 font-mono">
+                                <div className="text-xs font-semibold text-emerald-700 font-mono">
                                     Topik Riset: {item.topic}
                                 </div>
-                                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-800/60">
+                                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200">
                                     "{item.message}"
                                 </p>
                             </div>
@@ -102,7 +102,7 @@ export default function InquiriesIndex({ inquiries = [] }) {
                             <div className="pt-2 flex items-center justify-between text-xs">
                                 <a
                                     href={`mailto:${item.email}?subject=Balasan Kolaborasi Riset RYVA.ID`}
-                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 font-semibold transition-colors"
+                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 font-semibold transition-colors"
                                 >
                                     <Mail className="w-3.5 h-3.5" />
                                     Balas via Email
@@ -110,7 +110,7 @@ export default function InquiriesIndex({ inquiries = [] }) {
 
                                 <button
                                     type="button"
-                                    className="p-1.5 text-slate-500 hover:text-rose-400 transition-colors"
+                                    className="p-1.5 text-slate-400 hover:text-rose-600 transition-colors"
                                     title="Hapus Pesan"
                                 >
                                     <Trash2 className="w-4 h-4" />
@@ -123,3 +123,4 @@ export default function InquiriesIndex({ inquiries = [] }) {
         </AdminLayout>
     );
 }
+
